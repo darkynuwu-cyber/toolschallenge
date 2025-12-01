@@ -1,1 +1,1 @@
-# toolschallenge
+Caso não seja criada a seq_nsu ou faça a criação do banco manualmente, pegar o src/main/resouces/db.migration/init.sql
