@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -81,7 +82,7 @@ public class GlobalExceptionHandler {
         Throwable root = ex.getMostSpecificCause();
         String message = "Error reading request body.";
 
-        if (root != null && root.getMessage() != null) {
+        if (Objects.nonNull(root.getMessage())) {
             String rootMsg = root.getMessage();
 
             if (rootMsg.contains("Invalid payment method type")) {
@@ -124,7 +125,7 @@ public class GlobalExceptionHandler {
             MethodArgumentTypeMismatchException ex,
             HttpServletRequest request) {
 
-        String requiredType = ex.getRequiredType() != null
+        String requiredType = Objects.nonNull(ex.getRequiredType())
                 ? ex.getRequiredType().getSimpleName()
                 : "unknown";
 
