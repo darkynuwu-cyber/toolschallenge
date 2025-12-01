@@ -85,12 +85,7 @@ public class GlobalExceptionHandler {
         if (Objects.nonNull(root.getMessage())) {
             String rootMsg = root.getMessage();
 
-            if (rootMsg.contains("Invalid payment method type")) {
-                message = rootMsg
-                        + " Allowed values: AVISTA, PARCELADO LOJA, PARCELADO EMISSOR.";
-            } else {
-                message = rootMsg;
-            }
+            message = formatBodyReadErrorMessage(rootMsg);
         }
 
         Map<String, Object> body = createBaseBody(
@@ -124,9 +119,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleMethodArgumentTypeMismatch(
             MethodArgumentTypeMismatchException ex,
             HttpServletRequest request) {
+    	
+    	Class<?> requiredClass = ex.getRequiredType();
 
-        String requiredType = Objects.nonNull(ex.getRequiredType())
-                ? ex.getRequiredType().getSimpleName()
+        String requiredType = Objects.nonNull(requiredClass)
+                ? requiredClass.getSimpleName()
                 : "unknown";
 
         String message = String.format(
@@ -195,4 +192,12 @@ public class GlobalExceptionHandler {
         body.put(PATH, request.getRequestURI());
         return body;
     }
+    
+	private String formatBodyReadErrorMessage(String rootMsg) {
+		if (rootMsg.contains("Invalid payment method type")) {
+		    return rootMsg
+		            + " Allowed values: AVISTA, PARCELADO LOJA, PARCELADO EMISSOR.";
+		}
+		return rootMsg;
+	}
 }
