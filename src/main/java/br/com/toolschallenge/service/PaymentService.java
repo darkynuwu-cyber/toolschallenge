@@ -8,10 +8,10 @@ import br.com.toolschallenge.dto.PagamentoResponseDTO;
 public interface PaymentService {
 
     PagamentoResponseDTO createPayment(PagamentoRequestDTO request);
-
-    PagamentoResponseDTO findPaymentById(String id);
     
     List<PagamentoResponseDTO> listAllPayments();
+
+    PagamentoResponseDTO findPaymentById(String id);
     
     PagamentoResponseDTO cancelPayment(String id);
 }
