@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import br.com.toolschallenge.exception.DuplicateTransactionIdException;
+import br.com.toolschallenge.exception.InvalidInstallmentsForPaymentTypeException;
 import br.com.toolschallenge.exception.PaymentNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
@@ -167,6 +168,19 @@ public class GlobalExceptionHandler {
         );
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    }
+    
+    @ExceptionHandler(InvalidInstallmentsForPaymentTypeException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidInstallmentsForPaymentType(
+            InvalidInstallmentsForPaymentTypeException ex,
+            HttpServletRequest request) {
+
+        Map<String, Object> body = createBaseBody(
+                ex.getMessage(),
+                request
+        );
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
     
     @ExceptionHandler(Exception.class)
