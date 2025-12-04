@@ -20,7 +20,7 @@ API REST para **processamento e consulta de pagamentos de cartão**, desenvolvid
 
 - **JPA / Hibernate**
   - Entidade: `TransactionEntity`
-  - Repositório: `TransactionRepository` (extends Spring Data JPA)
+  - Repositório: `TransactionRepository`
 - **Banco de dados:** PostgreSQL
   - Driver: `org.postgresql:postgresql`
   - Uso de sequence para NSU (`seq_nsu`)
