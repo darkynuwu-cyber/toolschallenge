@@ -158,7 +158,7 @@ class TransactionMapperImplTest {
 
         assertEquals(StatusTransacao.AUTORIZADO.getCodigo(), entity.getStatus());
         assertEquals(formaPagamento.getTipo().getCodigo(), entity.getPaymentType());
-        assertEquals(formaPagamento.getTipo().getCodigo(), entity.getInstallments());
+        assertEquals(formaPagamento.getParcelas(), entity.getInstallments());
 
         verify(transactionRepository).getNextNsu();
         verifyNoMoreInteractions(transactionRepository);
