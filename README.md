@@ -1,6 +1,6 @@
 # 💳 ToolsChallenge – Payment API
 
-API REST para **processamento e consulta de pagamentos de cartão**, desenvolvida em **Java 21** com **Spring Boot**, **PostgreSQL**, **Flyway**, testes com **JUnit 5 + Mockito** e documentação via **Swagger/OpenAPI (springdoc)**.
+API REST para **processamento e consulta de pagamentos de cartão**, desenvolvida em **Java 21** com **Spring Boot**, **PostgreSQL**, **Flyway**, testes com **JUnit 5 + Mockito**.
 
 ---
 
