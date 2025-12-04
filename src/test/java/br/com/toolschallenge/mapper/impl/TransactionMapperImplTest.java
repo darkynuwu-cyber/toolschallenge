@@ -86,7 +86,7 @@ class TransactionMapperImplTest {
                 .authorizationCode(SAMPLE_AUTH_CODE)
                 .status(StatusTransacao.AUTORIZADO.getCodigo())
                 .paymentType(TipoFormaPagamento.PARCELADO_LOJA.getCodigo())
-                .installments(3)
+                .installments("3")
                 .build();
 
         PagamentoResponseDTO response = mapper.toPaymentResponse(entity);
@@ -118,8 +118,8 @@ class TransactionMapperImplTest {
     @DisplayName(DISPLAY_TO_TRANSACTION_ENTITY_MAP_FIELDS)
     void toTransactionEntityRequest_shouldMapFieldsAndGenerateValues() {
         FormaPagamentoDTO formaPagamento = FormaPagamentoDTO.builder()
-                .tipo(TipoFormaPagamento.PARCELADO_LOJA)
-                .parcelas(3)
+                .tipo(TipoFormaPagamento.AVISTA)
+                .parcelas("1")
                 .build();
 
         DescricaoRequestDTO descricao = DescricaoRequestDTO.builder()
@@ -169,7 +169,7 @@ class TransactionMapperImplTest {
     void toTransactionEntityRequest_shouldThrowInvalidInstallmentsForAvista() {
         FormaPagamentoDTO formaPagamento = FormaPagamentoDTO.builder()
                 .tipo(TipoFormaPagamento.AVISTA)
-                .parcelas(1)
+                .parcelas("3")
                 .build();
 
         DescricaoRequestDTO descricao = DescricaoRequestDTO.builder()

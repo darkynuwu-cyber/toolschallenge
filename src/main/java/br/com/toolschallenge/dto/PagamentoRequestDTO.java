@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PagamentoRequestDTO {
 
-    @NotNull
+	@NotNull(message = "Transaction is required")
     @Valid
     private TransacaoRequestDTO transacao;
 }

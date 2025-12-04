@@ -49,7 +49,7 @@ public final class PaymentTestDataFactory {
     public static FormaPagamentoDTO createAvistaFormaPagamento() {
         return FormaPagamentoDTO.builder()
                 .tipo(TipoFormaPagamento.AVISTA)
-                .parcelas(1)
+                .parcelas("1")
                 .build();
     }
 
@@ -64,7 +64,7 @@ public final class PaymentTestDataFactory {
                 .authorizationCode("AUTHCODE123")
                 .status(StatusTransacao.AUTORIZADO.getCodigo())
                 .paymentType(TipoFormaPagamento.AVISTA.getCodigo())
-                .installments(1)
+                .installments("1")
                 .build();
     }
 
@@ -79,7 +79,7 @@ public final class PaymentTestDataFactory {
                 .authorizationCode("AUTHCODE123")
                 .status(StatusTransacao.CANCELADO.getCodigo())
                 .paymentType(TipoFormaPagamento.AVISTA.getCodigo())
-                .installments(1)
+                .installments("1")
                 .build();
     }
 

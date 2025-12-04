@@ -73,7 +73,7 @@ public class TransactionMapperImpl implements TransactionMapper {
 
         String nsu = generateNsu();
         String authorizationCode = generateAuthorizationCode();
-        Integer installmentsQtd = formaPagamento.getTipo().getCodigo();
+        String installmentsQtd = formaPagamento.getParcelas();
 
         return TransactionEntity.builder()
                 .id(transacao.getId())
@@ -89,9 +89,10 @@ public class TransactionMapperImpl implements TransactionMapper {
                 .build();
     }
     
-    private Integer normalizePayment(Integer installmentsQtd, Integer paymentType) {
+    private Integer normalizePayment(String installmentsQtd, Integer paymentType) {
+    	Integer installmentsQtdInt = Integer.valueOf(installmentsQtd);
     	Integer avistaCode = TipoFormaPagamento.AVISTA.getCodigo();
-    	if (installmentsQtd < 2 && avistaCode.equals(paymentType)) {
+    	if (installmentsQtdInt > 1 && avistaCode.equals(paymentType)) {
             throw new InvalidInstallmentsForPaymentTypeException();
         }
     	return paymentType;
