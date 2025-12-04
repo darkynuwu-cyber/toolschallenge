@@ -50,6 +50,6 @@ public class TransactionEntity {
     @Column(name = "payment_type", length = 30)
     private Integer paymentType;
 
-    @Column(name = "installments")
-    private Integer installments;
+    @Column(name = "installments",nullable = false, length = 20)
+    private String installments;
 }

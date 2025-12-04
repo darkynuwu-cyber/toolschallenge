@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS tb_transacao (
     authorization_code    VARCHAR(20),
     status                INTEGER,
     payment_type          INTEGER,
-    installments          INTEGER,
+    installments          VARCHAR(20)  NOT NULL,
     CONSTRAINT pk_tb_transacao PRIMARY KEY (id)
 );
 
