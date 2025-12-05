@@ -23,6 +23,11 @@ public class PaymentServiceImpl implements PaymentService {
     private final TransactionRepository transactionRepository;
     private final TransactionMapper transactionMapper;
 
+    /**
+     * Esse método pode ser melhorado para que acesse uma outra api para 
+     * autenticação e depois verificação de limite.
+     * Isso poderia ser feito nas proximas sprints do projeto.
+     */
     @Override
     public PagamentoResponseDTO createPayment(PagamentoRequestDTO request) {
     	TransactionEntity entity;
